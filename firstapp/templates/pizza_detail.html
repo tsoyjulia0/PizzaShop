@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% block page %}
+    <a href="{% url 'home' %}"> Main Page</a>
+    <div>
+        <h2>{{ pizza.name }}</h2>
+        {% if pizza.photo %}
+            <img src="{{ pizza.photo.url }}" alt="{{ pizza.name }}">
+        {% endif %}
+        <div>{{ pizza.short_description }}</div>
+        <div>{{ pizza.price|floatformat:"2" }}</div>
+    </div>
+
+    <h2>Order</h2>
+    <form method="POST">
+{#        Each form displays as separate paragraph #}
+        {{ form.as_p }}
+        <input type="submit" value="Send order">
+    </form>
+{% endblock %}
