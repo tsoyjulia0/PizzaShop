@@ -11,7 +11,11 @@
     </div>
 
     <h2>Order</h2>
+    {% if sent %}
+        <h2>Thank you! Your order accepted!</h2>
+    {% endif %}
     <form method="POST">
+        {% csrf_token %}
 {#        Each form displays as separate paragraph #}
         {{ form.as_p }}
         <input type="submit" value="Send order">

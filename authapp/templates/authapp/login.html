@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Enter</title>
+</head>
+<body>
+    <h2>Enter</h2>
+    <form method="POST">
+        {% csrf_token %}
+        {{ form }}
+        <button type="submit">Enter</button>
+    </form>
+</body>
+</html>

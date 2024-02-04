@@ -16,6 +16,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from django.contrib.auth import views as auth_views
 
 import testurlapp
 from testurlapp import views
@@ -23,11 +24,18 @@ from teststaticapp import views
 from django.conf.urls.static import static
 from django.conf import settings
 from firstapp import views
+from validformapp import views
+from authapp import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.home, name='home'),
-    path('<int:pizza_id>/', views.pizza_detail, name='pizza_detail')
+    path('/authapp/login', auth_views.login,
+         {'template_name': 'authapp/login.html'},
+         name='authapp-login')
+
+    # path('formpage/', views.form_page, name='form-page'),
+    # path('<int:pizza_id>/', views.pizza_detail, name='pizza_detail')
     # path('', views.home, name='index'),
     # path('', views.home, name='home'),
     # path('test_app/', include('testurlapp.test_urls'))
